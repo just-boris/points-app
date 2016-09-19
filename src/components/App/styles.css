@@ -5,3 +5,14 @@
   padding: 1.5em;
   border: 1px solid #ddd;
 }
+
+.App__title {
+    margin: 0;
+}
+
+.App__left {
+    width: 100%;
+    padding: 0.3em 0.5em;
+    font-size: 14px;
+    text-align: right;
+}
