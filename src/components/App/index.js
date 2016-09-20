@@ -1,18 +1,9 @@
 import './styles.css';
 import React from 'react';
-import {compose, withState, mapProps} from 'recompose';
+import {compose, withReducer, mapProps} from 'recompose';
 import Slider from '../Slider';
 
-const initialSkills = {
-  agility: 0,
-  charisma: 0,
-  strength: 0,
-  intellect: 0,
-  luck: 0
-};
-const maxAvailable = 10;
-
-function App({available, skills, setSkills}) {
+function App({skills, available, updateSkills}) {
   return (
     <div className="App">
       <h1 className="App__title">Spend your points</h1>
@@ -26,19 +17,29 @@ function App({available, skills, setSkills}) {
       </div>
       {Object.keys(skills).map(skill =>
         <Slider key={skill} title={skill} value={skills[skill]}
-          onChange={value => setSkills({...skills, [skill]: value})} />
+          onChange={value => updateSkills({skill, value})} />
       )}
     </div>
   );
 }
 
+const initialState = {
+  skills: {
+    agility: 0,
+    charisma: 0,
+    strength: 0,
+    intellect: 0,
+    luck: 0
+  },
+  available: 10
+};
+
 export default compose(
-  withState('skills', 'setSkills', initialSkills),
-  mapProps(({skills, ...props}) => {
-    const totalSpent = Object.keys(skills).reduce((total, skill) => total + skills[skill], 0);
-    return {
-      skills, ...props,
-      available: maxAvailable - totalSpent
-    }
-  })
+  withReducer('state', 'updateSkills', (state, action) => {
+    const delta = state.skills[action.skill] - action.value;
+    const available = state.available + delta;
+    const skills = {...state.skills, [action.skill]: action.value};
+    return available < 0 ? state : { skills, available };
+  }, initialState),
+  mapProps(props => ({...props, ...props.state}))
 )(App);
