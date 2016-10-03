@@ -3,11 +3,15 @@
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
+    "enzyme": "^2.4.1",
+    "jasmine-collection-matchers": "^0.2.0",
+    "jasmine-enzyme": "^1.2.0",
+    "react-addons-test-utils": "^15.3.2",
     "react-scripts": "0.4.3"
   },
   "dependencies": {
-    "react": "^15.3.1",
-    "react-dom": "^15.3.1",
+    "react": "^15.3.2",
+    "react-dom": "^15.3.2",
     "recompose": "^0.20.2"
   },
   "scripts": {
