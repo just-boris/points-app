@@ -1,0 +1,23 @@
+exports[`<Slider /> should render slider 1`] = `
+<label
+  className="Slider row">
+  <div
+    className="row__col Slider__title">
+    test
+  </div>
+  <div
+    className="row__col row__col_flex">
+    <input
+      className="Slider__control"
+      max={10}
+      onChange={[Function onChange]}
+      type="range"
+      value={5} />
+  </div>
+  <div
+    className="row__col">
+    5
+     pts
+  </div>
+</label>
+`;
