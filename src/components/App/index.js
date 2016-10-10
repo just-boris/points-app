@@ -4,7 +4,7 @@ import {compose, withReducer, mapProps} from 'recompose';
 import skillsReducer from './reducer';
 import Slider from '../Slider';
 
-function App({skills, available, updateSkills}) {
+export function App({skills, available, updateSkills}) {
   return (
     <div className="App">
       <h1 className="App__title">Spend your points</h1>
@@ -23,6 +23,8 @@ function App({skills, available, updateSkills}) {
     </div>
   );
 }
+
+App.displayName = 'App';
 
 export default compose(
   withReducer('state', 'updateSkills', skillsReducer, skillsReducer(undefined, {type: 'INIT'})),

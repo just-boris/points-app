@@ -3,11 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
+    "babel-preset-react-app": "^0.2.1",
     "enzyme": "^2.4.1",
     "jasmine-collection-matchers": "^0.2.0",
     "jasmine-enzyme": "^1.2.0",
     "react-addons-test-utils": "^15.3.2",
-    "react-scripts": "0.4.3"
+    "react-scripts": "0.4.3",
+    "react-styleguidist": "^4.0.0",
+    "webpack": "^1.13.2"
   },
   "dependencies": {
     "react": "^15.3.2",
